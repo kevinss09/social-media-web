@@ -59,7 +59,7 @@ export default function UserPage() {
 						</div>
 					</div>
 					<a
-						href="#"
+						href="/logout"
 						class={["nav_link", active === 6 ? "active" : ""].join(" ")}
 						onClick={() => onButtonClick(6)}
 					>
@@ -68,7 +68,7 @@ export default function UserPage() {
 					</a>
 				</nav>
 			</div>
-			<div class="height-100 bg-light user-container">
+			<div class="bg-light user-container">
 				<div className="row">
 					<div className="col-md-4 header-top ">
 						<div className="header-user-img">

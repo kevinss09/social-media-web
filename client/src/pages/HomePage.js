@@ -3,10 +3,30 @@ import React, { useRef, useState, useEffect } from "react";
 export default function LoginPage() {
 	const [toggle, setToggle] = useState(false);
 	const [active, setActive] = useState(null);
+	const [items, setItems] = useState([]);
 
 	const onButtonClick = (index) => {
 		setActive(index);
 	};
+
+	useEffect(() => {
+		fetchItems();
+	}, []);
+
+	const fetchItems = async () => {
+		console.log("It goes to fucking fetch items");
+		const data = await fetch("/socials", {
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+			},
+		});
+
+		const items = await data.json();
+		setItems(items);
+	};
+
+	console.log(items);
 
 	return (
 		<body id="body-pd" className={["body ", toggle ? "body-pd" : ""].join(" ")}>
@@ -21,7 +41,7 @@ export default function LoginPage() {
 					></i>
 				</div>
 				<div class="header_img">
-					<img src="./images/closeImage.jpg" alt="" />
+					<img src="images/closeImage.jpg" alt="" />
 				</div>
 			</header>
 			<div class={["l-navbar", toggle ? "show" : ""].join(" ")} id="nav-bar">
@@ -59,7 +79,7 @@ export default function LoginPage() {
 						</div>
 					</div>
 					<a
-						href="#"
+						href="/logout"
 						class={["nav_link", active === 6 ? "active" : ""].join(" ")}
 						onClick={() => onButtonClick(6)}
 					>
@@ -68,7 +88,7 @@ export default function LoginPage() {
 					</a>
 				</nav>
 			</div>
-			<div class="height-100 bg-light main-container">
+			<div class="bg-light main-container">
 				{/* <h4>Main Components</h4> */}
 				<div className="container-fluid">
 					<div className="row gy-5">
@@ -135,17 +155,18 @@ export default function LoginPage() {
 							</span>
 							<div className="mt-4">
 								<p className="mb-2">
-									English Bay Beach is Vancouver's first and main beach. It is
-									where thousands of Vancouverites have learned to swim. The
-									view from the beach is spectacular such that people just come
-									to sit and enjoy the view.
+									Much of the park remains forested, just as it was in the late
+									1800s — the park has roughly half a million trees, some
+									standing as tall as 76 metres and hundreds of years old. In
+									the past 100 years, there have been three major wind storms
+									that caused damage and loss of many of the trees, the most
+									recent in 2006.
 								</p>
 								<p>
-									You can also enjoy the normal beach activities such as
-									swimming, laying in the sun, and volleyball. The water is
-									ocean salt water and is normally cold, but is bearable to swim
-									during the summer months. They even put out a slide to use
-									during the summer.
+									The Vancouver Seawall draws thousands of residents and
+									visitors to the park each day. The park features lush forest
+									trails, relaxing beaches, the Vancouver Aquarium and many more
+									attractions.
 								</p>
 							</div>
 						</div>

@@ -3,6 +3,32 @@ import React, { useRef, useState, useEffect } from "react";
 export default function PostPage() {
 	const [toggle, setToggle] = useState(false);
 	const [active, setActive] = useState(0);
+	const [selectedFile, setSelectedFile] = useState();
+	const [preview, setPreview] = useState();
+
+	// create a preview as a side effect, whenever selected file is changed
+	useEffect(() => {
+		if (!selectedFile) {
+			setPreview(undefined);
+			return;
+		}
+
+		const objectUrl = URL.createObjectURL(selectedFile);
+		setPreview(objectUrl);
+
+		// free memory when ever this component is unmounted
+		return () => URL.revokeObjectURL(objectUrl);
+	}, [selectedFile]);
+
+	const onSelectFile = (e) => {
+		if (!e.target.files || e.target.files.length === 0) {
+			setSelectedFile(undefined);
+			return;
+		}
+
+		// I've kept this example simple by using the first image instead of multiple
+		setSelectedFile(e.target.files[0]);
+	};
 
 	const onButtonClick = (index) => {
 		setActive(index);
@@ -58,7 +84,7 @@ export default function PostPage() {
 						</div>
 					</div>
 					<a
-						href="#"
+						href="/logout"
 						class={["nav_link", active === 6 ? "active" : ""].join(" ")}
 						onClick={() => onButtonClick(6)}
 					>
@@ -67,29 +93,28 @@ export default function PostPage() {
 					</a>
 				</nav>
 			</div>
-			<div class="height-100 bg-light post-container">
+			<div class="bg-light post-container">
 				<div className="container-fluid">
 					<div className="row">
 						<div className="col-md-6">
 							<img src="./images/gate.jpg" alt="" className="post-image" />
 						</div>
 						<div className="col-md-6">
-							<div className="right-section-post">
-								<form className="">
+							<div className="right-section-post h-100">
+								<form
+									className="h-100"
+									enctype="multipart/form-data"
+									method="POST"
+									action="/addNewPost"
+								>
 									<h1 className="right-h1">Post</h1>
 									<div className="right-div right-div-email mb-3">
-										<label for="exampleInputEmail1" className="form-label">
+										<label for="exampleInputLocation" className="form-label">
 											Location
 										</label>
-										{/* <input
-											type="email"
-											className="form-control"
-											id="exampleInputEmail1"
-											placeholder="Email"
-											aria-describedby="emailHelp"
-										/> */}
 										<input
 											type="text"
+											name="location"
 											placeholder="Location"
 											className="form-control"
 										/>
@@ -100,7 +125,7 @@ export default function PostPage() {
 										</label>
 										<textarea
 											id="w3review"
-											name="w3review"
+											name="caption"
 											rows="4"
 											cols="37"
 											placeholder="Caption"
@@ -111,7 +136,18 @@ export default function PostPage() {
 										<label for="exampleImage" className="form-label">
 											Image
 										</label>
-										<input type="file" id="img" name="img" accept="image/*" />
+										<input
+											type="file"
+											id="img"
+											name="img"
+											accept="image/*"
+											onChange={onSelectFile}
+										/>
+										<div className="img-preview-container">
+											{selectedFile && (
+												<img src={preview} className="img-preview" />
+											)}
+										</div>
 									</div>
 									<button
 										type="submit"

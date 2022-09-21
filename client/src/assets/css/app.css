@@ -26,7 +26,6 @@
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	border-radius: 10%;
 }
 
 .right-section {
@@ -72,6 +71,10 @@ form {
 	margin-bottom: 1rem;
 }
 
+.form-top {
+	height: auto;
+}
+
 .form-bottom {
 	display: flex;
 	flex-direction: row;
@@ -103,16 +106,33 @@ form {
 	font-size: small;
 }
 
+.button-group {
+	padding-right: 10%;
+	padding-left: 10%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
 @media screen and (min-width: 768px) {
 	.homepage-container {
-		height: 100vh;
-		padding: 2% 15%;
+		min-height: 100vh;
+		padding-top: 8%;
+		padding-bottom: 5%;
+		padding-right: 20%;
+		padding-left: 20%;
+	}
+	.home-photo {
+		width: 100%;
+		height: 84.5%;
+	}
+	.form-top {
+		height: 75%;
 	}
 }
 
 /* registerpage-container */
 .container-fluid-homepage {
-	max-height: 100vh;
 	background-color: rgba(240, 240, 240, 1);
 }
 .inside-registerPage {
@@ -123,9 +143,27 @@ form {
 	height: 100%;
 }
 
+.img-preview-container {
+	width: 100%;
+	height: 100%;
+	margin-top: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.img-preview {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	/* padding-left: 1rem;
+	padding-right: 1rem;
+	padding-top: 1rem; */
+}
+
 @media screen and (min-width: 768px) {
 	.inside-registerPage {
-		padding: 10% 20%;
+		padding: 5% 20%;
 	}
 	.register-photo {
 		width: 100%;
@@ -148,7 +186,7 @@ form {
 .body {
 	position: relative;
 	margin: var(--header-height) 0 0 0;
-	padding: 0 1rem;
+	padding: 0 0rem;
 	font-family: var(--body-font);
 	font-size: var(--normal-font-size);
 	transition: 0.5s;
@@ -239,7 +277,8 @@ a {
 	left: 0;
 }
 .body-pd {
-	padding-left: calc(var(--nav-width) + 1rem);
+	/* padding-left: calc(var(--nav-width) + 1rem); */
+	padding-left: calc(var(--nav-width));
 }
 .active {
 	color: var(--white-color);
@@ -288,6 +327,7 @@ a {
 	padding-left: 10%;
 	padding-right: 10%;
 	padding-top: 5%;
+	min-height: 100vh;
 }
 
 .img-home {
@@ -323,6 +363,7 @@ a {
 	padding-left: 5%;
 	padding-right: 5%;
 	padding-top: 5%;
+	min-height: 100vh;
 }
 
 .header-user-img {
@@ -377,6 +418,7 @@ a {
 	.user-container {
 		padding-right: 15%;
 		padding-left: 15%;
+		min-height: 100vh;
 	}
 	.header-bottom {
 		text-align: left;
@@ -390,6 +432,7 @@ a {
 
 /* Post Container */
 .post-container {
+	min-height: 100vh;
 }
 
 .post-image {
@@ -428,3 +471,85 @@ a {
 		height: 280px;
 	}
 }
+
+/* Log out page design  */
+.logout-container {
+}
+
+.container-fluid-logout {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background-color: lightgray;
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.door-closed-icon {
+	width: 10rem;
+	height: 10rem;
+}
+.container-fluid-logout h2 {
+	margin-top: 2rem;
+	font-size: 20px;
+	text-align: center;
+	font-weight: 100;
+}
+
+@media screen and (min-width: 768px) {
+	.container-fluid-logout {
+		border-radius: 10%;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		background-color: lightgray;
+		box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+	}
+	.logout-container {
+		padding-right: 35%;
+		padding-left: 35%;
+		padding-top: 5%;
+		padding-bottom: 10%;
+	}
+	.header-bottom {
+		text-align: left;
+	}
+
+	.user-image {
+		width: 280px;
+		height: 280px;
+	}
+}
+
+/* Next register page  */
+
+/* .nextRegisterPage {
+	height: 100vh;
+} */
+
+/* .container-registerPage {
+	margin-right: 35%;
+	margin-left: 35%;
+	margin-top: 10%;
+	margin-bottom: 5%;
+}
+
+.form-container {
+	width: 100%;
+	height: 100%;
+}
+
+.form-next-register {
+	border: none;
+	background-color: lightgray;
+	text-align: center;
+	color: black;
+	padding: 40px;
+	border-radius: 10%;
+	font-size: 20px;
+} */

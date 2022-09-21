@@ -1,0 +1,21 @@
+	// const newAccount = new Social({
+	// 	email: req.body.email,
+	// 	password: req.body.password,
+	// 	username: req.body.username,
+	// 	profilePicture: req.file.path,
+	// });
+	// try {
+	// 	await newAccount.save((err, newSocial) => {
+	// 		if (err) {
+	// 			console.log(err);
+	// 			res.end("cannot save the new Account on the database");
+	// 		} else {
+	// 			res.redirect("/home");
+	// 			res.end();
+	// 		}
+	// 	});
+	// } catch {
+	// 	console.log(err);
+	// 	res.redirect("/login");
+	// 	res.end();
+	// }
